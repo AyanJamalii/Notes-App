@@ -1,0 +1,26 @@
+body {
+  font-family: "poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #fff44f, #ffd966, #ff9a76, #ff5e62);
+  background-size: 400% 400%;
+  animation: gradientFlow 10s ease infinite;
+}
+
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+h1{
+    font-weight: 700;
+}
+h2{
+    font-weight: 500;
+}
