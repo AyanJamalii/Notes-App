@@ -44,7 +44,7 @@ const Signup = ({showPassword, setShowPassword, alertMsg, setAlertMsg}) => {
       <div className="signup-card">
         <div className="decor-circle1"></div>
       <div className="decor-circle2"></div>
-        <h1 className="Signup-h1">Welcome <br /><span> Sign Up</span> to Start.</h1>
+        <h1 className="Signup-h1">Welcome to <span> YourNoteBook </span>, <br /><span> Sign Up</span> to Start.</h1>
         <div className="input-boxes">
         <form onSubmit={handleSignup}>
           <h3>Email:</h3>
@@ -83,7 +83,7 @@ const Signup = ({showPassword, setShowPassword, alertMsg, setAlertMsg}) => {
             <button className="signup-btn">Sign Up</button>
           </div>
         </form>
-          <p style={{ margin: "5px 0 0 125px" }} className="new-accc">
+          <p style={{ margin: "5px 0 0 141px" }} className="new-accc">
             Already have an account? <Link to="/login">Login</Link>
           </p>
         </div>

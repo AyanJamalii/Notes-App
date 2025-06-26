@@ -26,6 +26,8 @@ const Dashboard = ({alertMsg, setAlertMsg}) => {
 
   const navigate = useNavigate();
 
+
+
   useEffect(() => {
     ProgressBar.start()
     const currentUser = auth.currentUser;
@@ -146,7 +148,7 @@ const Dashboard = ({alertMsg, setAlertMsg}) => {
 
 
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-        <h1>Your Note Book.</h1>
+        <h1>YourNoteBook.</h1>
       </div>
       <h6 style={{ position: 'relative', display: 'flex', justifyContent: 'center' }}>Your personal Diary online.</h6>
 

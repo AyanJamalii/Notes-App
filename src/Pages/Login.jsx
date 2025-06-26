@@ -48,7 +48,7 @@ const Login = ({showPassword, setShowPassword, alertMsg, setAlertMsg}) => {
       <div className="signup-card">
       <div className="decor-circle1"></div>
       <div className="decor-circle2"></div>
-        <h1 className="Signup-h1">Welcome Back <br /> <span> Login </span>to Continue</h1>
+        <h1 className="Signup-h1">Welcome Back to <span> YourNoteBook <br />  Login </span>to Continue</h1>
         <div className="input-boxes">
           <form onSubmit={handleLogin}>
           <h3>Email:</h3>
@@ -77,14 +77,14 @@ const Login = ({showPassword, setShowPassword, alertMsg, setAlertMsg}) => {
           <span className="toggle-password-icon" onClick={() => setShowPassword(prev => !prev)}>{showPassword ? <FiEyeOff/> : <FiEye />}</span>
           <div className="remeberMe">
             <input type="checkbox" id="rememberMe" checked={rememberMe} onChange={(e) => setRememberMe(e.target.checked)} />
-          <label htmlFor="rememberMe" style={{marginLeft: '5px'}} className="remeber-label">Remember Me</label> 
+          <label htmlFor="rememberMe" style={{marginLeft: "5px", position: "relative", bottom: "2px"}} className="remeber-label">Remember Me</label> 
           </div>
           <p className="forgot-link" onClick={handleForgotPass}>Forgot Password?</p>          
           <div className="signupBtn-box">
             <button className="signup-btn">Login</button>
           </div>
           </form>
-          <p style={{ margin: "5px 0 0 125px" }} className="new-acc">
+          <p style={{margin: "5px 0px 0px 147px"}} className="new-acc">
             Create new account? <Link to="/signup">Signup</Link>
           </p>
         </div>
