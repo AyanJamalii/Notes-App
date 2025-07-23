@@ -44,7 +44,7 @@ const Signup = ({showPassword, setShowPassword, alertMsg, setAlertMsg}) => {
       <div className="signup-card">
         <div className="decor-circle1"></div>
       <div className="decor-circle2"></div>
-        <h1 className="Signup-h1">Welcome to <span> YourNoteBook </span>, <br /><span> Sign Up</span> to Start.</h1>
+        <h1 className="Signup-h1">Welcome to <span> Xyz </span>, <br /><span> Sign Up</span> to Start.</h1>
         <div className="input-boxes">
         <form onSubmit={handleSignup}>
           <h3>Email:</h3>

@@ -18,135 +18,137 @@ import CustomAlert from '../Components/CustomAlert';
 import ProgressBar from '../Components/ProgressBar';
 
 const Dashboard = ({alertMsg, setAlertMsg}) => {
-  const [allNotes, setAllNotes] = useState([]);
-  const [notesTitle, setNotesTitle] = useState("");
-  const [notesContent, setNotesContent] = useState("");
-  const [isEditing, setIsEditing] = useState(null);
-  const [user, setUser] = useState(null);
+  // const [allNotes, setAllNotes] = useState([]);
+  // const [notesTitle, setNotesTitle] = useState("");
+  // const [notesContent, setNotesContent] = useState("");
+  // const [isEditing, setIsEditing] = useState(null);
+  // const [user, setUser] = useState(null);
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
 
 
-  useEffect(() => {
-    ProgressBar.start()
-    const currentUser = auth.currentUser;
-    if (!currentUser) {
-      navigate("/login");
-      return;
-    }
-    setUser(currentUser);
-    fetchNotes(currentUser.uid);
-    ProgressBar.done()
-  }, []);
+  // useEffect(() => {
+  //   ProgressBar.start()
+  //   const currentUser = auth.currentUser;
+  //   if (!currentUser) {
+  //     navigate("/login");
+  //     return;
+  //   }
+  //   setUser(currentUser);
+  //   fetchNotes(currentUser.uid);
+  //   ProgressBar.done()
+  // }, []);
 
-  const fetchNotes = async (uid) => {
-    try {
-      ProgressBar.start()
-      const q = query(collection(db, "notes"), where("uid", "==", uid));
-      const querySnapshot = await getDocs(q);
-      const notes = [];
-      querySnapshot.forEach((doc) => {
-        notes.push({ ...doc.data(), id: doc.id });
-      });
-      setAllNotes(notes);
-      ProgressBar.done()
-    } catch (error) {
-      console.error("Error fetching notes:", error);
-    }
-  };
+  // const fetchNotes = async (uid) => {
+  //   try {
+  //     ProgressBar.start()
+  //     const q = query(collection(db, "notes"), where("uid", "==", uid));
+  //     const querySnapshot = await getDocs(q);
+  //     const notes = [];
+  //     querySnapshot.forEach((doc) => {
+  //       notes.push({ ...doc.data(), id: doc.id });
+  //     });
+  //     setAllNotes(notes);
+  //     ProgressBar.done()
+  //   } catch (error) {
+  //     console.error("Error fetching notes:", error);
+  //   }
+  // };
 
-  const addNotes = async () => {
-    if (notesTitle.trim() === "" || notesContent.trim() === "") {
-      setAlertMsg({show: true, type: 'error', message:"Can't add empty notes."})
-      return;
-    }
+  // const addNotes = async () => {
+  //   if (notesTitle.trim() === "" || notesContent.trim() === "") {
+  //     setAlertMsg({show: true, type: 'error', message:"Can't add empty notes."})
+  //     return;
+  //   }
 
-    try {
-      ProgressBar.start()
-      await addDoc(collection(db, "notes"), {
-        uid: user.uid,
-        title: notesTitle,
-        content: notesContent,
-        liked: false,
-        createdAt: new Date()
-      });
+  //   try {
+  //     ProgressBar.start()
+  //     await addDoc(collection(db, "notes"), {
+  //       uid: user.uid,
+  //       title: notesTitle,
+  //       content: notesContent,
+  //       liked: false,
+  //       createdAt: new Date()
+  //     });
 
-      setNotesTitle("");
-      setNotesContent("");
-      fetchNotes(user.uid);
-      ProgressBar.done()
-    } catch (error) {
-      ProgressBar.done()
-      console.error("Error adding note:", error);
-    }
-  };
+  //     setNotesTitle("");
+  //     setNotesContent("");
+  //     fetchNotes(user.uid);
+  //     ProgressBar.done()
+  //   } catch (error) {
+  //     ProgressBar.done()
+  //     console.error("Error adding note:", error);
+  //   }
+  // };
 
-  const deleteNote = async (id) => {
-    try {
-      ProgressBar.start()
-      await deleteDoc(doc(db, "notes", id));
-      fetchNotes(user.uid);
-      ProgressBar.done()
-    } catch (error) {
-      ProgressBar.done()
-      console.error("Error deleting note:", error);
-    }
-  };
+  // const deleteNote = async (id) => {
+  //   try {
+  //     ProgressBar.start()
+  //     await deleteDoc(doc(db, "notes", id));
+  //     fetchNotes(user.uid);
+  //     ProgressBar.done()
+  //   } catch (error) {
+  //     ProgressBar.done()
+  //     console.error("Error deleting note:", error);
+  //   }
+  // };
 
-  const handlelikedNotes = async (id, currentLiked) => {
-    try {
-      await updateDoc(doc(db, "notes", id), {
-        liked: !currentLiked
-      });
-      fetchNotes(user.uid);
-    } catch (error) {
-      console.error("Error updating like:", error);
-    }
-  };
+  // const handlelikedNotes = async (id, currentLiked) => {
+  //   try {
+  //     await updateDoc(doc(db, "notes", id), {
+  //       liked: !currentLiked
+  //     });
+  //     fetchNotes(user.uid);
+  //   } catch (error) {
+  //     console.error("Error updating like:", error);
+  //   }
+  // };
 
-  const startEditing = (note) => {
-    setIsEditing(note.id);
-    setNotesTitle(note.title);
-    setNotesContent(note.content);
-  };
+  // const startEditing = (note) => {
+  //   setIsEditing(note.id);
+  //   setNotesTitle(note.title);
+  //   setNotesContent(note.content);
+  // };
 
-  const saveEditedNote = async () => {
-    try {
-      ProgressBar.start()
-      await updateDoc(doc(db, "notes", isEditing), {
-        title: notesTitle,
-        content: notesContent
-      });
-      setNotesTitle("");
-      setNotesContent("");
-      setIsEditing(null);
-      fetchNotes(user.uid);
-      ProgressBar.done()
-    } catch (error) {
-      ProgressBar.done()
-      console.error("Error updating note:", error);
-    }
-  };
+  // const saveEditedNote = async () => {
+  //   try {
+  //     ProgressBar.start()
+  //     await updateDoc(doc(db, "notes", isEditing), {
+  //       title: notesTitle,
+  //       content: notesContent
+  //     });
+  //     setNotesTitle("");
+  //     setNotesContent("");
+  //     setIsEditing(null);
+  //     fetchNotes(user.uid);
+  //     ProgressBar.done()
+  //   } catch (error) {
+  //     ProgressBar.done()
+  //     console.error("Error updating note:", error);
+  //   }
+  // };
 
-  const cancelNote = () => {
-    setNotesTitle("");
-    setNotesContent("");
-    setIsEditing(null);
-  };
+  // const cancelNote = () => {
+  //   setNotesTitle("");
+  //   setNotesContent("");
+  //   setIsEditing(null);
+  // };
 
-  const handleLogOut = async () => {
-    ProgressBar.start()
-    await signOut(auth);
-    setAlertMsg({ show: false, type: '', message: '' });
-    ProgressBar.done()
-    navigate("/login");
-  };
+  // const handleLogOut = async () => {
+  //   ProgressBar.start()
+  //   await signOut(auth);
+  //   setAlertMsg({ show: false, type: '', message: '' });
+  //   ProgressBar.done()
+  //   navigate("/login");
+  // };
 
   return (
     <>
-
-
+      <div style={{display: "flex", textAlign:"center", justifyContent: "center"}}>
+    <h1 >welcome to dashboard.</h1> 
+    </div>
+{/* 
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         <h1>YourNoteBook.</h1>
       </div>
@@ -197,10 +199,11 @@ const Dashboard = ({alertMsg, setAlertMsg}) => {
           </div>
           </div>
         </ul>
-      </div>
+      </div> */}
       <CustomAlert message={alertMsg} onClose={() => setAlertMsg({show: false, message: '', type: ''})} />
     </>
   );
 };
 
 export default Dashboard;
+
