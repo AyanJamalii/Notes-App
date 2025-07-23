@@ -24,7 +24,7 @@ const Dashboard = ({alertMsg, setAlertMsg}) => {
   // const [isEditing, setIsEditing] = useState(null);
   // const [user, setUser] = useState(null);
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
 
 
@@ -135,18 +135,19 @@ const Dashboard = ({alertMsg, setAlertMsg}) => {
   //   setIsEditing(null);
   // };
 
-  // const handleLogOut = async () => {
-  //   ProgressBar.start()
-  //   await signOut(auth);
-  //   setAlertMsg({ show: false, type: '', message: '' });
-  //   ProgressBar.done()
-  //   navigate("/login");
-  // };
+  const handleLogOut = async () => {
+    ProgressBar.start()
+    await signOut(auth);
+    setAlertMsg({ show: false, type: '', message: '' });
+    ProgressBar.done()
+    navigate("/login");
+  };
 
   return (
     <>
       <div style={{display: "flex", textAlign:"center", justifyContent: "center"}}>
     <h1 >welcome to dashboard.</h1> 
+   <button className="logout-btn" onClick={handleLogOut}>Logout</button>
     </div>
 {/* 
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
@@ -167,7 +168,6 @@ const Dashboard = ({alertMsg, setAlertMsg}) => {
   <div className="set-2-btns">
     <button className="save-note-btn" onClick={saveEditedNote}>💾 Save</button>
     <button className="cancel-btn" onClick={cancelNote}>❌ Cancel</button>
-    <button className="logout-btn" onClick={handleLogOut}>Logout</button>
   </div>
 ) : (
   <div className="set-2-btns">
